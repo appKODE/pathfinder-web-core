@@ -1,0 +1,60 @@
+{
+  "name": "@kode-frontend/pathfinder-web-core",
+  "version": "0.0.1",
+  "description": "Tool to change environments on the fly",
+  "type": "module",
+  "main": "dist/index.js",
+  "files": [
+    "dist/**/*"
+  ],
+  "scripts": {
+    "prepublish": "echo 'RUN PREPUBLISH SCRIPT'",
+    "preinstall": "echo 'RUN PREINSTALL SCRIPT'",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "release": "release-it"
+  },
+  "keywords": [
+    "environment",
+    "mock",
+    "interceptor"
+  ],
+  "homepage": "https://github.com/todo",
+  "repository": {
+    "url": "git@https://github.com/todo",
+    "type": "git"
+  },
+  "bugs": {
+    "url": "https://github.com/todo/issues"
+  },
+  "author": "KODE",
+  "contributors": [
+    "KODE frontend team"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "release-it": "^14.14.1",
+    "typescript": "^4.6.3"
+  },
+  "publishConfig": {
+    "cache": "cache/.npm",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "release-it": {
+    "git": {
+      "commitMessage": "chore: release ${version}",
+      "tagName": "v${version}"
+    },
+    "npm": {
+      "publish": true
+    },
+    "github": {
+      "release": true
+    },
+    "plugins": {
+      "@release-it/conventional-changelog": {
+        "preset": "angular"
+      }
+    }
+  }
+}
