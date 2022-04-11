@@ -21,3 +21,7 @@ TODO.
 ## Tags
 
 `release` - create release tag and increase version
+
+## Roadmap
+
+[ ] Add tests
