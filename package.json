@@ -3,15 +3,16 @@
   "version": "0.0.1",
   "description": "Tool to change environments on the fly",
   "type": "module",
-  "main": "dist/index.js",
+  "types": "lib/index.d.ts",
+  "main": "lib/index.js",
   "files": [
-    "dist/**/*"
+    "lib/**/*"
   ],
   "scripts": {
     "prepublish": "echo 'RUN PREPUBLISH SCRIPT'",
     "preinstall": "echo 'RUN PREINSTALL SCRIPT'",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc",
+    "build": "rm -rf dist && rm -rf lib && tsc",
     "release": "release-it"
   },
   "keywords": [
@@ -19,13 +20,13 @@
     "mock",
     "interceptor"
   ],
-  "homepage": "https://github.com/todo",
+  "homepage": "https://github.com/appKODE/pathfinder-web-core",
   "repository": {
-    "url": "git@https://github.com/todo",
+    "url": "git@https://github.com/appKODE/pathfinder-web-core",
     "type": "git"
   },
   "bugs": {
-    "url": "https://github.com/todo/issues"
+    "url": "https://github.com/appKODE/pathfinder-web-core/issues"
   },
   "author": "KODE",
   "contributors": [

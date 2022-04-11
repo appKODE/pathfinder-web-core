@@ -10,13 +10,17 @@ import {
   UrlEnvGetter,
   UrlEnvSetter,
   UrlSpec,
-} from './types';
-import { createTemplateRegExp, createUrl, getPath, parseUrl } from './utils';
+} from "./types";
+//import { createTemplateRegExp, createUrl, getPath, parseUrl } from './utils';
+import { createTemplateRegExp } from "./utils/create-reg-exp";
+import { createUrl } from "./utils/create-url";
+import { getPath } from "./utils/get-path";
+import { parseUrl } from "./utils/parse-url";
 
 const matchSpec = (
   matchers: Map<UrlSpec, RegExp>,
   method: string,
-  url: string,
+  url: string
 ): UrlSpec | null => {
   let result: UrlSpec | null = null;
 
@@ -61,7 +65,7 @@ const createSpec = () => {
       return [...envs];
     },
     getEnv(id: string) {
-      return envs.find(envItem => envItem.id === id);
+      return envs.find((envItem) => envItem.id === id);
     },
   };
 };
@@ -84,7 +88,7 @@ export const createPathFinder: PathfinderBuilder = (resolver, storage) => {
       }
 
       const envId = getUrlEnv(urlSpec.id) || getGlobalEnv();
-      const env = envSpecs?.find(item => item.id === envId);
+      const env = envSpecs?.find((item) => item.id === envId);
 
       if (env) {
         dataUrl.baseUrl = env.baseUrl;
@@ -104,7 +108,7 @@ export const createPathFinder: PathfinderBuilder = (resolver, storage) => {
     return url;
   };
 
-  const setGlobalEnv: GlobalEnvSetter = envId => {
+  const setGlobalEnv: GlobalEnvSetter = (envId) => {
     storage.setGlobalEnv(envId || undefined);
   };
 
@@ -116,7 +120,7 @@ export const createPathFinder: PathfinderBuilder = (resolver, storage) => {
     storage.setEndpointEnv(urlId, envId);
   };
 
-  const getUrlEnv: UrlEnvGetter = urlId => {
+  const getUrlEnv: UrlEnvGetter = (urlId) => {
     return storage.getEndpointEnv(urlId);
   };
 
