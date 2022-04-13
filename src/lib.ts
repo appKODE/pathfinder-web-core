@@ -10,17 +10,16 @@ import {
   UrlEnvGetter,
   UrlEnvSetter,
   UrlSpec,
-} from "./types";
-//import { createTemplateRegExp, createUrl, getPath, parseUrl } from './utils';
-import { createTemplateRegExp } from "./utils/create-reg-exp";
-import { createUrl } from "./utils/create-url";
-import { getPath } from "./utils/get-path";
-import { parseUrl } from "./utils/parse-url";
+} from './types';
+
+import {
+  createTemplateRegExp, createUrl, getPath, parseUrl,
+} from './utils';
 
 const matchSpec = (
   matchers: Map<UrlSpec, RegExp>,
   method: string,
-  url: string
+  url: string,
 ): UrlSpec | null => {
   let result: UrlSpec | null = null;
 
@@ -73,15 +72,16 @@ const createSpec = () => {
 export const createPathFinder: PathfinderBuilder = (resolver, storage) => {
   const spec = createSpec();
 
-  const buildUrl: UrlBuilder = ({ method, url, matchers, envSpecs }) => {
+  const buildUrl: UrlBuilder = ({
+    method, url, matchers, envSpecs,
+  }) => {
     const urlSpec = matchSpec(matchers, method, url);
     const dataUrl = parseUrl(url);
 
     if (urlSpec && dataUrl) {
       const matcher = createUrlMatchers([urlSpec]).get(urlSpec);
 
-      const path =
-        matcher && dataUrl?.path ? getPath(dataUrl.path, matcher) : null;
+      const path = matcher && dataUrl?.path ? getPath(dataUrl.path, matcher) : null;
 
       if (!path) {
         return url;
@@ -112,17 +112,13 @@ export const createPathFinder: PathfinderBuilder = (resolver, storage) => {
     storage.setGlobalEnv(envId || undefined);
   };
 
-  const getGlobalEnv: GlobalEnvGetter = () => {
-    return storage.getGlobalEnv();
-  };
+  const getGlobalEnv: GlobalEnvGetter = () => storage.getGlobalEnv();
 
   const setUrlEnv: UrlEnvSetter = (urlId, envId) => {
     storage.setEndpointEnv(urlId, envId);
   };
 
-  const getUrlEnv: UrlEnvGetter = (urlId) => {
-    return storage.getEndpointEnv(urlId);
-  };
+  const getUrlEnv: UrlEnvGetter = (urlId) => storage.getEndpointEnv(urlId);
 
   const setSpec: SpecSetter = (obj: unknown) => {
     try {
@@ -136,9 +132,7 @@ export const createPathFinder: PathfinderBuilder = (resolver, storage) => {
     }
   };
 
-  const getSpec: SpecGetter = () => {
-    return storage.getSpec();
-  };
+  const getSpec: SpecGetter = () => storage.getSpec();
 
   const reset: ResetHandler = () => {
     storage.resetEndpointsEnv();

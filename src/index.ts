@@ -1,4 +1,5 @@
-export { createPathFinder } from "./lib";
+import { createPathFinder } from './lib';
+
 export {
   DataResolver,
   DataStorage,
@@ -20,4 +21,10 @@ export {
   UrlListGetter,
   UrlMethod,
   UrlSpec,
-} from "./types";
+} from './types';
+
+export { createPathFinder };
+
+export default {
+  createPathFinder,
+};
