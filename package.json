@@ -15,16 +15,10 @@
     "url": "git@https://github.com/appKODE/pathfinder-web-core",
     "type": "git"
   },
-  "keywords": [
-    "queryzz",
-    "query",
-    "set",
-    "get",
-    "format",
-    "getQuery",
-    "formatQuery",
-    "setQuery",
-    "typescript"
+  "files": [
+    "dist",
+    "package.json",
+    "README.md"
   ],
   "author": "KODE",
   "contributors": [
