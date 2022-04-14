@@ -1,6 +1,11 @@
 
 
-### [0.0.7](https://https//github.com/appKODE/pathfinder-web-core/compare/v0.0.6...v0.0.7) (2022-04-13)
+### [0.0.8](https://https//github.com/appKODE/pathfinder-web-core/compare/v0.0.7...v0.0.8) (2022-04-14)
+
+
+### Bug Fixes
+
+* **exports:** add createUrlMatchers to module index ([973e7f5](https://https//github.com/appKODE/pathfinder-web-core/commit/973e7f577a21c60547c80cbace7801b6e8085ec2))### [0.0.7](https://https//github.com/appKODE/pathfinder-web-core/compare/v0.0.6...v0.0.7) (2022-04-13)
 
 
 ### Bug Fixes
