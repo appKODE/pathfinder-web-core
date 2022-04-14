@@ -10,7 +10,8 @@
     "dev": "webpack --env development --watch",
     "build": "webpack --env production",
     "test": "jest",
-    "release": "release-it"
+    "release": "release-it",
+    "prepublish": "npm run test && npm run build"
   },
   "repository": {
     "url": "git@https://github.com/appKODE/pathfinder-web-core",
