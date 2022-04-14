@@ -1,6 +1,6 @@
 {
   "name": "@kode-frontend/pathfinder-web-core",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Core libs for tool to change environments on the fly",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

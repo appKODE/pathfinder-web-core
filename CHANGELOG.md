@@ -1,6 +1,6 @@
 
 
-### [0.0.10](https://https//github.com/appKODE/pathfinder-web-core/compare/v0.0.9...v0.0.10) (2022-04-14)### [0.0.9](https://https//github.com/appKODE/pathfinder-web-core/compare/v0.0.8...v0.0.9) (2022-04-14)### [0.0.8](https://https//github.com/appKODE/pathfinder-web-core/compare/v0.0.7...v0.0.8) (2022-04-14)
+### [0.0.11](https://https//github.com/appKODE/pathfinder-web-core/compare/v0.0.10...v0.0.11) (2022-04-14)### [0.0.10](https://https//github.com/appKODE/pathfinder-web-core/compare/v0.0.9...v0.0.10) (2022-04-14)### [0.0.9](https://https//github.com/appKODE/pathfinder-web-core/compare/v0.0.8...v0.0.9) (2022-04-14)### [0.0.8](https://https//github.com/appKODE/pathfinder-web-core/compare/v0.0.7...v0.0.8) (2022-04-14)
 
 
 ### Bug Fixes
