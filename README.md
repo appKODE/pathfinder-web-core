@@ -25,3 +25,11 @@ Releases makes with release-it.
 Local release
 - Generate your personal access-token with `api` scope.
 - run `$ GITLAB_TOKEN=your-personal-access-token yarn release-it`
+
+
+## TODO
+
+- [ ] add tests
+- [ ] add gitlab CI quality pipeline
+- [ ] add gitlab CI release pipline
+- [ ] add docs and description about project and other packages
