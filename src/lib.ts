@@ -14,25 +14,8 @@ import {
 
 import {
   createTemplateRegExp, createUrl, getPath, parseUrl,
+  findSpec,
 } from './utils';
-
-const matchSpec = (
-  matchers: Map<UrlSpec, RegExp>,
-  method: string,
-  url: string,
-): UrlSpec | null => {
-  let result: UrlSpec | null = null;
-
-  matchers.forEach((value, key) => {
-    const match = url.match(value);
-
-    if (match && key.method === method) {
-      result = key;
-    }
-  });
-
-  return result;
-};
 
 export function createUrlMatchers(urlList: UrlSpec[]): Map<UrlSpec, RegExp> {
   const matchers = new Map<UrlSpec, RegExp>();
@@ -75,7 +58,7 @@ export const createPathFinder: PathfinderBuilder = (resolver, storage) => {
   const buildUrl: UrlBuilder = ({
     method, url, matchers, envSpecs,
   }) => {
-    const urlSpec = matchSpec(matchers, method, url);
+    const urlSpec = findSpec(matchers, method, url);
     const dataUrl = parseUrl(url);
 
     if (urlSpec && dataUrl) {
@@ -101,7 +84,7 @@ export const createPathFinder: PathfinderBuilder = (resolver, storage) => {
 
         const newUrl = createUrl({ ...dataUrl, path });
 
-        return newUrl;
+        return newUrl || url;
       }
     }
 
