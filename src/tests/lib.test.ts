@@ -1,7 +1,10 @@
-export { createPathFinder, createUrlMatchers } from '../lib';
+import { createPathFinder } from '../lib';
+import { dataResolver, dataStorage } from './mocks';
 
-describe('parseUrl test', () => {
-  it('should return correct result', () => {
-    expect('result').toEqual('result');
-  });
+describe('createPathFinder test', () => {
+  it.todo('Should return correct pathfinder instance');
+  // it('should return correct result', () => {
+  //   const result = createPathFinder(dataResolver, dataStorage);
+  //   expect(result).toEqual('result');
+  // });
 });
