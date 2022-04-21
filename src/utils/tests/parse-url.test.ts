@@ -17,4 +17,9 @@ describe('parseUrl test', () => {
     const result = parseUrl('url.dev');
     expect(result).toEqual(null);
   });
+
+  it('should return null', () => {
+    const result = parseUrl('');
+    expect(result).toEqual(null);
+  });
 });

@@ -10,6 +10,8 @@
     "dev": "webpack --env development --watch",
     "build": "webpack --env production",
     "test": "jest",
+    "test-watch": "jest --watch",
+    "test-coverage": "jest --coverage",
     "release": "release-it",
     "prepublish": "npm run test && npm run build"
   },
