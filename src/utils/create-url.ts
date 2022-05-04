@@ -1,20 +1,22 @@
 import { DataUrl } from '../types';
 
-export function createUrl(url: DataUrl): string {
+export function createUrl(url: DataUrl): string|null {
   const result = [];
 
-  if (url.baseUrl !== undefined) {
-    result.push(url.baseUrl);
+  if (!url.baseUrl) {
+    return null;
   }
+
+  result.push(url.baseUrl);
 
   result.push(url.path);
 
   const query = url.query.toString();
-  if (query.length) {
+  if (query.length > 0) {
     result.push(`?${query}`);
   }
 
-  if (url.fragment !== undefined) {
+  if (url.fragment) {
     result.push(`#${url.fragment}`);
   }
 
