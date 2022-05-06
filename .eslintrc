@@ -16,7 +16,8 @@
     "@typescript-eslint/no-use-before-define": "off",
     "import/prefer-default-export": "off",
     "arrow-parens": "off",
-    "object-curly-newline": "off"
+    "object-curly-newline": "off",
+    "operator-linebreak": ["error", "after"]
   },
   "globals": {
     "window": true,

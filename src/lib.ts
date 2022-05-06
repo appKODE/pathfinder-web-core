@@ -37,7 +37,7 @@ const createSpec = () => {
     setUrls(data: UrlSpec[]) {
       urls = data;
     },
-    setEnvs(data:EnvSpec[]) {
+    setEnvs(data: EnvSpec[]) {
       envs = data;
     },
     getUrlMatchers() {
@@ -65,7 +65,8 @@ export const createPathFinder: PathfinderBuilder = (resolver, storage) => {
     if (urlSpec && dataUrl) {
       const matcher = createUrlMatchers([urlSpec]).get(urlSpec);
 
-      const path = matcher && dataUrl?.path ? getPath(dataUrl.path, matcher) : null;
+      const path =
+        matcher && dataUrl?.path ? getPath(dataUrl.path, matcher) : null;
 
       if (!path) {
         return url;
