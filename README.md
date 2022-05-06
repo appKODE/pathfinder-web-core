@@ -1,6 +1,5 @@
 # :construction: :construction: :construction: THIS PROJECT HAS EXPERIMENTAL STATUS, DON'T USE IT :construction: :construction: :construction:
 
-
 # pathfinder-web-core
 
 ## Summary
@@ -17,15 +16,14 @@ The library is easy to integrate into an existing project and does not require a
 yarn add @kode-frontend/pathfinder-web-core
 ```
 
-
 ## Release flow
 
-Releases makes with release-it. 
+Releases makes with release-it.
 
 Local release
+
 - Generate your personal access-token with `api` scope.
 - run `$ GITLAB_TOKEN=your-personal-access-token yarn release-it`
-
 
 ## TODO
 
