@@ -1,3 +1,4 @@
+import { getStorage } from './storage';
 import {
   EnvSpec,
   GlobalEnvGetter,
@@ -18,6 +19,7 @@ import {
   getPath,
   parseUrl,
   findSpec,
+  getStorageAdapter,
 } from './utils';
 
 export function createUrlMatchers(urlList: UrlSpec[]): Map<UrlSpec, RegExp> {
@@ -55,8 +57,14 @@ const createSpec = () => {
   };
 };
 
-export const createPathFinder: PathfinderBuilder = (resolver, storage) => {
+export const createPathFinder: PathfinderBuilder = ({
+  resolver,
+  data,
+  dataKey,
+}) => {
   const spec = createSpec();
+
+  const storage = getStorage(getStorageAdapter(data, dataKey));
 
   const buildUrl: UrlBuilder = ({ method, url, matchers, envSpecs }) => {
     const urlSpec = findSpec(matchers, method, url);
@@ -94,7 +102,7 @@ export const createPathFinder: PathfinderBuilder = (resolver, storage) => {
   };
 
   const setGlobalEnv: GlobalEnvSetter = envId => {
-    storage.setGlobalEnv(envId || undefined);
+    storage.setGlobalEnv(envId);
   };
 
   const getGlobalEnv: GlobalEnvGetter = () => storage.getGlobalEnv();
@@ -122,7 +130,14 @@ export const createPathFinder: PathfinderBuilder = (resolver, storage) => {
   const reset: ResetHandler = () => {
     storage.resetEndpointsEnv();
     storage.resetGlobalEnv();
+    storage.resetGlobalHeaders();
+    storage.resetEndpointsHeaders();
   };
+
+  const { setGlobalHeaders } = storage;
+  const { getGlobalHeaders } = storage;
+  const { setEndpointHeaders } = storage;
+  const { getEndpointHeaders } = storage;
 
   return {
     getSpec,
@@ -133,5 +148,9 @@ export const createPathFinder: PathfinderBuilder = (resolver, storage) => {
     setUrlEnv,
     getUrlEnv,
     reset,
+    getEndpointHeaders,
+    getGlobalHeaders,
+    setEndpointHeaders,
+    setGlobalHeaders,
   };
 };
