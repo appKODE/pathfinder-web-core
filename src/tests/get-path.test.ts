@@ -1,6 +1,9 @@
 import { getPath } from '../utils';
 import {
-  anotherEndpointTemplateMatcher, endpointTemplate, endpointTemplateMatcher, url,
+  anotherEndpointTemplateMatcher,
+  endpointTemplate,
+  endpointTemplateMatcher,
+  url,
 } from './mocks';
 
 describe('getPath test', () => {

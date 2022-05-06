@@ -1,6 +1,6 @@
 import { DataUrl } from '../types';
 
-export function createUrl(url: DataUrl): string|null {
+export function createUrl(url: DataUrl): string | null {
   const result = [];
 
   if (!url.baseUrl) {

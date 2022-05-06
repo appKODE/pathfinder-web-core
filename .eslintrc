@@ -6,9 +6,7 @@
     "plugin:@typescript-eslint/recommended",
     "airbnb-typescript"
   ],
-  "plugins": [
-    "@typescript-eslint"
-  ],
+  "plugins": ["@typescript-eslint"],
   "rules": {
     "linebreak-style": 0,
     "@typescript-eslint/dot-notation": "off",
@@ -16,7 +14,9 @@
     "@typescript-eslint/no-throw-literal": "off",
     "no-restricted-syntax": "off",
     "@typescript-eslint/no-use-before-define": "off",
-    "import/prefer-default-export": "off"
+    "import/prefer-default-export": "off",
+    "arrow-parens": "off",
+    "object-curly-newline": "off"
   },
   "globals": {
     "window": true,
