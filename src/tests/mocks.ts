@@ -1,4 +1,4 @@
-import { DataResolver, DataStorage, DataUrl, Spec, UrlSpec } from '../types';
+import { DataResolver, Storage, DataUrl, Spec, UrlSpec } from '../types';
 
 export const endpointTemplate = '/user/v2/content';
 export const endpointTemplateMatcher = /\/user\/v2\/content/gm;
@@ -57,7 +57,7 @@ export const dataResolver: DataResolver = {
   parse: () => spec,
 };
 
-export const dataStorage: DataStorage = {
+export const dataStorage: Storage = {
   getEndpointEnv: () => '',
   getGlobalEnv: () => '',
   getSpec: () => spec,
@@ -66,4 +66,10 @@ export const dataStorage: DataStorage = {
   setEndpointEnv: () => null,
   setGlobalEnv: () => null,
   setSpec: () => null,
+  getEndpointHeaders: () => [],
+  getGlobalHeaders: () => [],
+  setEndpointHeaders: () => null,
+  setGlobalHeaders: () => null,
+  resetEndpointsHeaders: () => null,
+  resetGlobalHeaders: () => null,
 };
