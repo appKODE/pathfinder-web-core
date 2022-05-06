@@ -3,3 +3,4 @@ export { createUrl } from './create-url';
 export { parseUrl } from './parse-url';
 export { getPath } from './get-path';
 export { findSpec } from './find-spec';
+export { getStorageAdapter } from './get-storage-adapter';
