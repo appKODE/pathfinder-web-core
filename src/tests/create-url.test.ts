@@ -1,7 +1,12 @@
 import { createUrl } from '../utils';
 import {
-  parsedUrl, parsedUrl2, parsedUrl3, parsedUrlWithoutDomain, url,
-  url2, url3,
+  parsedUrl,
+  parsedUrl2,
+  parsedUrl3,
+  parsedUrlWithoutDomain,
+  url,
+  url2,
+  url3,
 } from './mocks';
 
 describe('parseUrl test', () => {

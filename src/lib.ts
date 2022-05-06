@@ -13,7 +13,10 @@ import {
 } from './types';
 
 import {
-  createTemplateRegExp, createUrl, getPath, parseUrl,
+  createTemplateRegExp,
+  createUrl,
+  getPath,
+  parseUrl,
   findSpec,
 } from './utils';
 
@@ -34,7 +37,7 @@ const createSpec = () => {
     setUrls(data: UrlSpec[]) {
       urls = data;
     },
-    setEnvs(data: EnvSpec[]) {
+    setEnvs(data:EnvSpec[]) {
       envs = data;
     },
     getUrlMatchers() {
@@ -47,7 +50,7 @@ const createSpec = () => {
       return [...envs];
     },
     getEnv(id: string) {
-      return envs.find((envItem) => envItem.id === id);
+      return envs.find(envItem => envItem.id === id);
     },
   };
 };
@@ -55,9 +58,7 @@ const createSpec = () => {
 export const createPathFinder: PathfinderBuilder = (resolver, storage) => {
   const spec = createSpec();
 
-  const buildUrl: UrlBuilder = ({
-    method, url, matchers, envSpecs,
-  }) => {
+  const buildUrl: UrlBuilder = ({ method, url, matchers, envSpecs }) => {
     const urlSpec = findSpec(matchers, method, url);
     const dataUrl = parseUrl(url);
 
@@ -71,7 +72,7 @@ export const createPathFinder: PathfinderBuilder = (resolver, storage) => {
       }
 
       const envId = getUrlEnv(urlSpec.id) || getGlobalEnv();
-      const env = envSpecs?.find((item) => item.id === envId);
+      const env = envSpecs?.find(item => item.id === envId);
 
       if (env) {
         dataUrl.baseUrl = env.baseUrl;
@@ -91,7 +92,7 @@ export const createPathFinder: PathfinderBuilder = (resolver, storage) => {
     return url;
   };
 
-  const setGlobalEnv: GlobalEnvSetter = (envId) => {
+  const setGlobalEnv: GlobalEnvSetter = envId => {
     storage.setGlobalEnv(envId || undefined);
   };
 
@@ -101,7 +102,7 @@ export const createPathFinder: PathfinderBuilder = (resolver, storage) => {
     storage.setEndpointEnv(urlId, envId);
   };
 
-  const getUrlEnv: UrlEnvGetter = (urlId) => storage.getEndpointEnv(urlId);
+  const getUrlEnv: UrlEnvGetter = urlId => storage.getEndpointEnv(urlId);
 
   const setSpec: SpecSetter = (obj: unknown) => {
     try {
