@@ -12,7 +12,7 @@ module.exports = ({ development }) => ({
     libraryExport: 'default',
     libraryTarget: 'umd',
     umdNamedDefine: true,
-    globalObject: 'typeof self === \'undefined\' ? this : self',
+    globalObject: "typeof self === 'undefined' ? this : self",
   },
   resolve: {
     extensions: ['.ts'],
