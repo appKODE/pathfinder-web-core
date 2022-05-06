@@ -7,8 +7,8 @@ module.exports = ({ development }) => ({
   mode: development ? 'development' : 'production',
   output: {
     filename: 'index.js',
-    path:path.resolve(__dirname, 'dist'),
-    library:'pathfinderWebCore',
+    path: path.resolve(__dirname, 'dist'),
+    library: 'pathfinderWebCore',
     libraryExport: 'default',
     libraryTarget: 'umd',
     umdNamedDefine: true,
