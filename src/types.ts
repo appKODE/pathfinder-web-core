@@ -40,21 +40,29 @@ export type DataUrl = {
   fragment?: string;
 };
 
-export type GlobalEnvSetter = (envId: string | null) => void;
+export type Header = {
+  key: string;
+  value: string;
+};
 
-export type GlobalEnvGetter = () => string;
+export type GlobalEnvSetter = (envId: string | null) => void;
+export type GlobalEnvGetter = () => string | null;
 
 export type UrlEnvSetter = (urlId: string, envId?: string) => void;
-
-export type UrlEnvGetter = (urlId: string) => string | undefined;
+export type UrlEnvGetter = (urlId: string) => string | null;
 
 export type ResetHandler = () => void;
 
 export type SpecSetter = (obj: unknown) => void;
-export type SpecGetter = () => Spec | undefined;
+export type SpecGetter = () => Spec | null;
 
 export type UrlListGetter = () => UrlSpec[];
 export type EnvListGetter = () => EnvSpec[];
+
+export type UrlHeadersSetter = (urlId: string, headers: Header[]) => void;
+export type GlobalHeadersSetter = (headers: Header[]) => void;
+export type UrlHeadersGetter = (urlId: string) => Header[];
+export type GlobalHeadersGetter = () => Header[];
 
 export type Pathfinder = {
   buildUrl: UrlBuilder;
@@ -65,25 +73,67 @@ export type Pathfinder = {
   getSpec: SpecGetter;
   setSpec: SpecSetter;
   reset: ResetHandler;
+  setGlobalHeaders: GlobalHeadersSetter;
+  getGlobalHeaders: GlobalHeadersGetter;
+  setEndpointHeaders: UrlHeadersSetter;
+  getEndpointHeaders: UrlHeadersGetter;
+};
+
+export type DataStorageItemSetter = (
+  key: string,
+  value: string,
+  prefix: string,
+) => void;
+export type DataStorageItemGetter = (key: string, prefix: string) => string;
+
+export type DataStorage = {
+  setItem: DataStorageItemSetter;
+  getItem: DataStorageItemGetter;
+};
+
+export type PathfinderBuilderOptions = {
+  resolver: DataResolver;
+  data: DataStorage;
+  dataKey: string;
 };
 
 export type PathfinderBuilder = (
-  resolver: DataResolver,
-  data: DataStorage,
+  options: PathfinderBuilderOptions,
 ) => Pathfinder;
 
 export type Spec = { urls: UrlSpec[]; envs: EnvSpec[] };
 
-export type DataStorage = {
-  getEndpointEnv: (urlId: string) => string | undefined;
-  setEndpointEnv: (urlId: string, envId?: string) => void;
-  getGlobalEnv: () => string;
-  setGlobalEnv: (endId?: string) => void;
+export type Storage = {
   setSpec: (data: Spec) => void;
-  getSpec: () => Spec | undefined;
+  getSpec: SpecGetter;
   resetEndpointsEnv: () => void;
   resetGlobalEnv: () => void;
+  getEndpointEnv: UrlEnvGetter;
+  setEndpointEnv: UrlEnvSetter;
+  getGlobalEnv: GlobalEnvGetter;
+  setGlobalEnv: GlobalEnvSetter;
+  resetGlobalHeaders: () => void;
+  resetEndpointsHeaders: () => void;
+  setGlobalHeaders: GlobalHeadersSetter;
+  getGlobalHeaders: GlobalHeadersGetter;
+  setEndpointHeaders: UrlHeadersSetter;
+  getEndpointHeaders: UrlHeadersGetter;
 };
+
+export type StorageItemSetter = (key: string, value: string) => void;
+export type StorageItemGetter = (key: string) => string | null;
+
+export type StorageAdapter = {
+  setItem: StorageItemSetter;
+  getItem: StorageItemGetter;
+};
+
+export type StorageAdapterFn = (
+  data: DataStorage,
+  storageKey: string,
+) => StorageAdapter;
+
+export type GetStorageFn = (adapter: StorageAdapter) => Storage;
 
 export type DataResolver = {
   parse: (obj: unknown) => Spec;
