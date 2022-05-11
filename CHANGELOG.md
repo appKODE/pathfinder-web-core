@@ -1,3 +1,17 @@
+
+
+## [1.0.0](https://https//github.com/appKODE/pathfinder-web-core/compare/v0.0.11...v1.0.0) (2022-05-11)
+
+
+### ⚠ BREAKING CHANGES
+
+* **storage:** move storage methods to this module from
+@kode-frontend/pathfinder-web-local-storage, update module API
+
+### Features
+
+* **storage:** add all storage methods from storage module, rewrite types ([ea049a8](https://https//github.com/appKODE/pathfinder-web-core/commit/ea049a85fecb2367dc56a99ee976d250d50d329b))
+
 ### [0.0.11](https://https//github.com/appKODE/pathfinder-web-core/compare/v0.0.10...v0.0.11) (2022-04-14)### [0.0.10](https://https//github.com/appKODE/pathfinder-web-core/compare/v0.0.9...v0.0.10) (2022-04-14)### [0.0.9](https://https//github.com/appKODE/pathfinder-web-core/compare/v0.0.8...v0.0.9) (2022-04-14)### [0.0.8](https://https//github.com/appKODE/pathfinder-web-core/compare/v0.0.7...v0.0.8) (2022-04-14)
 
 ### Bug Fixes
