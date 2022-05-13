@@ -100,7 +100,6 @@ export type PathfinderBuilderOptions = {
   resolver: DataResolver;
   data: DataStorage;
   dataKey: string;
-  removeSpec: RemoveSpecHandler;
 };
 
 export type PathfinderBuilder = (
