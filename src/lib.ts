@@ -11,6 +11,7 @@ import {
   UrlEnvGetter,
   UrlEnvSetter,
   UrlSpec,
+  RemoveSpecHandler,
 } from './types';
 
 import {
@@ -35,6 +36,7 @@ export function createUrlMatchers(urlList: UrlSpec[]): Map<UrlSpec, RegExp> {
 const createSpec = () => {
   let urls: UrlSpec[] = [];
   let envs: EnvSpec[] = [];
+
   return {
     setUrls(data: UrlSpec[]) {
       urls = data;
@@ -53,6 +55,10 @@ const createSpec = () => {
     },
     getEnv(id: string) {
       return envs.find(envItem => envItem.id === id);
+    },
+    reset() {
+      urls = [];
+      envs = [];
     },
   };
 };
@@ -134,6 +140,11 @@ export const createPathFinder: PathfinderBuilder = ({
     storage.resetEndpointsHeaders();
   };
 
+  const removeSpec: RemoveSpecHandler = () => {
+    spec.reset();
+    storage.removeSpec();
+  };
+
   const { setGlobalHeaders } = storage;
   const { getGlobalHeaders } = storage;
   const { setEndpointHeaders } = storage;
@@ -148,6 +159,7 @@ export const createPathFinder: PathfinderBuilder = ({
     setUrlEnv,
     getUrlEnv,
     reset,
+    removeSpec,
     getEndpointHeaders,
     getGlobalHeaders,
     setEndpointHeaders,
