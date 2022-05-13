@@ -7,7 +7,7 @@ import {
   url,
   url2,
   url3,
-} from './mocks';
+} from '../__mocks__/mocks';
 
 describe('parseUrl test', () => {
   it('should return correct result 1', () => {

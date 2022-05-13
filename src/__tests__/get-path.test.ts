@@ -4,7 +4,7 @@ import {
   endpointTemplate,
   endpointTemplateMatcher,
   url,
-} from './mocks';
+} from '../__mocks__/mocks';
 
 describe('getPath test', () => {
   it('should return correct result', () => {
