@@ -53,6 +53,8 @@ export type UrlEnvGetter = (urlId: string) => string | null;
 
 export type ResetHandler = () => void;
 
+export type RemoveSpecHandler = () => void;
+
 export type SpecSetter = (obj: unknown) => void;
 export type SpecGetter = () => Spec | null;
 
@@ -72,6 +74,7 @@ export type Pathfinder = {
   getUrlEnv: UrlEnvGetter;
   getSpec: SpecGetter;
   setSpec: SpecSetter;
+  removeSpec: RemoveSpecHandler;
   reset: ResetHandler;
   setGlobalHeaders: GlobalHeadersSetter;
   getGlobalHeaders: GlobalHeadersGetter;
@@ -85,16 +88,19 @@ export type DataStorageItemSetter = (
   prefix: string,
 ) => void;
 export type DataStorageItemGetter = (key: string, prefix: string) => string;
+export type DataStorageItemRemover = (key: string, prefix: string) => void;
 
 export type DataStorage = {
   setItem: DataStorageItemSetter;
   getItem: DataStorageItemGetter;
+  removeItem: DataStorageItemRemover;
 };
 
 export type PathfinderBuilderOptions = {
   resolver: DataResolver;
   data: DataStorage;
   dataKey: string;
+  removeSpec: RemoveSpecHandler;
 };
 
 export type PathfinderBuilder = (
@@ -118,14 +124,17 @@ export type Storage = {
   getGlobalHeaders: GlobalHeadersGetter;
   setEndpointHeaders: UrlHeadersSetter;
   getEndpointHeaders: UrlHeadersGetter;
+  removeSpec: () => void;
 };
 
 export type StorageItemSetter = (key: string, value: string) => void;
 export type StorageItemGetter = (key: string) => string | null;
+export type StorageItemRemover = (key: string) => void;
 
 export type StorageAdapter = {
   setItem: StorageItemSetter;
   getItem: StorageItemGetter;
+  removeItem: StorageItemRemover;
 };
 
 export type StorageAdapterFn = (
