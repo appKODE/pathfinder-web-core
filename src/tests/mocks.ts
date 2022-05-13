@@ -66,6 +66,7 @@ export const dataStorage: Storage = {
   setEndpointEnv: () => null,
   setGlobalEnv: () => null,
   setSpec: () => null,
+  removeSpec: () => null,
   getEndpointHeaders: () => [],
   getGlobalHeaders: () => [],
   setEndpointHeaders: () => null,
