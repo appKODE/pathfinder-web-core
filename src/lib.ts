@@ -11,7 +11,7 @@ import {
   UrlEnvGetter,
   UrlEnvSetter,
   UrlSpec,
-  RemoveSpecHandler,
+  RemoveAllHandler,
 } from './types';
 
 import {
@@ -140,9 +140,9 @@ export const createPathFinder: PathfinderBuilder = ({
     storage.resetEndpointsHeaders();
   };
 
-  const removeSpec: RemoveSpecHandler = () => {
+  const removeAll: RemoveAllHandler = () => {
     spec.reset();
-    storage.removeSpec();
+    storage.removeAll();
   };
 
   const { setGlobalHeaders } = storage;
@@ -159,7 +159,7 @@ export const createPathFinder: PathfinderBuilder = ({
     setUrlEnv,
     getUrlEnv,
     reset,
-    removeSpec,
+    removeAll,
     getEndpointHeaders,
     getGlobalHeaders,
     setEndpointHeaders,

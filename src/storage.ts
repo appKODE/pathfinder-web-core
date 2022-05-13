@@ -97,8 +97,10 @@ export const getStorage: GetStorageFn = adapter => {
     return null;
   };
 
-  const removeSpec = () => {
+  const removeAll = () => {
     adapter.removeItem(SPEC_KEY);
+    adapter.removeItem(ENDPOINTS_KEY);
+    adapter.removeItem(GLOBAL_ENV_KEY);
   };
 
   /* Headers */
@@ -149,7 +151,6 @@ export const getStorage: GetStorageFn = adapter => {
   const storage: Storage = {
     getSpec,
     setSpec,
-    removeSpec,
     getEndpointEnv,
     setEndpointEnv,
     resetEndpointsEnv,
@@ -162,6 +163,7 @@ export const getStorage: GetStorageFn = adapter => {
     resetGlobalHeaders,
     setEndpointHeaders,
     setGlobalHeaders,
+    removeAll,
   };
 
   return storage;
