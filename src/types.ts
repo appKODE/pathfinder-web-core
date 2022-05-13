@@ -53,7 +53,7 @@ export type UrlEnvGetter = (urlId: string) => string | null;
 
 export type ResetHandler = () => void;
 
-export type RemoveSpecHandler = () => void;
+export type RemoveAllHandler = () => void;
 
 export type SpecSetter = (obj: unknown) => void;
 export type SpecGetter = () => Spec | null;
@@ -74,7 +74,7 @@ export type Pathfinder = {
   getUrlEnv: UrlEnvGetter;
   getSpec: SpecGetter;
   setSpec: SpecSetter;
-  removeSpec: RemoveSpecHandler;
+  removeAll: RemoveAllHandler;
   reset: ResetHandler;
   setGlobalHeaders: GlobalHeadersSetter;
   getGlobalHeaders: GlobalHeadersGetter;
@@ -123,7 +123,7 @@ export type Storage = {
   getGlobalHeaders: GlobalHeadersGetter;
   setEndpointHeaders: UrlHeadersSetter;
   getEndpointHeaders: UrlHeadersGetter;
-  removeSpec: () => void;
+  removeAll: () => void;
 };
 
 export type StorageItemSetter = (key: string, value: string) => void;
