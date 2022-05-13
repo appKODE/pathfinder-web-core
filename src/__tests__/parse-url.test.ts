@@ -1,5 +1,5 @@
 import { parseUrl } from '../utils';
-import { parsedUrl, url } from './mocks';
+import { parsedUrl, url } from '../__mocks__/mocks';
 
 describe('parseUrl test', () => {
   it('should return correct result', () => {

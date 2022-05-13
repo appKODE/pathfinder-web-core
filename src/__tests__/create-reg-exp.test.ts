@@ -1,5 +1,5 @@
 import { createTemplateRegExp } from '../utils/create-template-reg-exp';
-import { endpointTemplate, endpointTemplateMatcher } from './mocks';
+import { endpointTemplate, endpointTemplateMatcher } from '../__mocks__/mocks';
 
 describe('getPath test', () => {
   it('should return correct result for normal endpoint template', () => {

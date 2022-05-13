@@ -1,5 +1,5 @@
 import { createTemplateRegExp, findSpec } from '../utils';
-import { endpointTemplate, url, urlSpec } from './mocks';
+import { endpointTemplate, url, urlSpec } from '../__mocks__/mocks';
 
 const matcher = createTemplateRegExp(endpointTemplate);
 
