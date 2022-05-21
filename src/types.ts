@@ -64,8 +64,15 @@ export type GlobalHeadersSetter = (headers: Header[]) => void;
 export type UrlHeadersGetter = (url: string) => Header[];
 export type GlobalHeadersGetter = () => Header[];
 
+export type FindSpecFn = (
+  matchers: Map<UrlSpec, RegExp>,
+  method: string,
+  url: string,
+) => UrlSpec | null;
+
 export type Pathfinder = {
   buildUrl: UrlBuilder;
+  findSpec: FindSpecFn;
   setGlobalEnv: GlobalEnvSetter;
   getGlobalEnv: GlobalEnvGetter;
   setUrlEnv: UrlEnvSetter;
@@ -102,12 +109,6 @@ export type PathfinderBuilder = (
 ) => Pathfinder;
 
 export type Spec = { urls: UrlSpec[]; envs: EnvSpec[] };
-
-export type FindSpecFn = (
-  matchers: Map<UrlSpec, RegExp>,
-  method: string,
-  url: string,
-) => UrlSpec | null;
 
 export type Storage = {
   setSpec: (data: Spec) => void;
