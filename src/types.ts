@@ -111,7 +111,6 @@ export type FindSpecFn = (
 
 export type Storage = {
   setSpec: (data: Spec) => void;
-  findSpec: FindSpecFn;
   getSpec: SpecGetter;
   resetEndpointsEnv: () => void;
   resetGlobalEnv: () => void;
