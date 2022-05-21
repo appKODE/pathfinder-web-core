@@ -1,5 +1,12 @@
 
 
+### [1.1.1](https://https//github.com/appKODE/pathfinder-web-core/compare/v1.1.0...v1.1.1) (2022-05-21)
+
+
+### Bug Fixes
+
+* **lib:** fix previous find spec export method ([e541787](https://https//github.com/appKODE/pathfinder-web-core/commit/e54178735aac0a15d65a1318b0c3a0b6fc26a976))
+
 ## [1.1.0](https://https//github.com/appKODE/pathfinder-web-core/compare/v1.0.0...v1.1.0) (2022-05-21)
 
 
