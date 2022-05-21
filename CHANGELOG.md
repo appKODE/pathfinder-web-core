@@ -1,5 +1,12 @@
 
 
+## [1.1.0](https://https//github.com/appKODE/pathfinder-web-core/compare/v1.0.0...v1.1.0) (2022-05-21)
+
+
+### Features
+
+* **storage:** add find spec methods to exports ([9f36e51](https://https//github.com/appKODE/pathfinder-web-core/commit/9f36e5161cea7d8deadce2eae0d05151ea50b22f))
+
 ## [1.0.0](https://https//github.com/appKODE/pathfinder-web-core/compare/v0.0.11...v1.0.0) (2022-05-11)
 
 
