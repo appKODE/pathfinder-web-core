@@ -140,6 +140,7 @@ export const createPathFinder: PathfinderBuilder = ({
   const { getEndpointHeaders } = storage;
 
   return {
+    findSpec,
     getSpec,
     setSpec,
     buildUrl,
