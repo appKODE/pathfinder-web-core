@@ -1,5 +1,12 @@
 
 
+### [1.1.2](https://https//github.com/appKODE/pathfinder-web-core/compare/v1.1.1...v1.1.2) (2022-05-21)
+
+
+### Bug Fixes
+
+* **lib types:** fix Pathfinder type - add findSpec ([889de02](https://https//github.com/appKODE/pathfinder-web-core/commit/889de026472784b3e9302a62a1eb2feb9af85815))
+
 ### [1.1.1](https://https//github.com/appKODE/pathfinder-web-core/compare/v1.1.0...v1.1.1) (2022-05-21)
 
 
