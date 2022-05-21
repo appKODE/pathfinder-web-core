@@ -13,7 +13,6 @@ import {
   UrlHeadersGetter,
   UrlHeadersSetter,
 } from './types';
-import { findSpec } from './utils';
 
 export const ENDPOINTS_KEY = 'endpoints';
 export const GLOBAL_ENV_KEY = 'global';
@@ -144,7 +143,6 @@ export const getStorage: GetStorageFn = adapter => {
   };
 
   const storage: Storage = {
-    findSpec,
     getSpec,
     setSpec,
     getEndpointEnv,
