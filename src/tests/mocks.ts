@@ -58,6 +58,7 @@ export const dataResolver: DataResolver = {
 };
 
 export const dataStorage: Storage = {
+  findSpec: () => null,
   getEndpointEnv: () => '',
   getGlobalEnv: () => '',
   getSpec: () => spec,
