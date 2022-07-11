@@ -1,8 +1,11 @@
 import { DataResolver, Storage, DataUrl, Spec, UrlSpec } from '../types';
 
 export const endpointTemplate = '/user/v2/content';
-export const endpointTemplateMatcher = /\/user\/v2\/content/gm;
+export const endpointTemplateWithPathParam = '/user/v2/customers/{customerId}';
+export const endpointTemplateWithPathParamSearch =
+  '/user/v2/customers/search/{q}';
 
+export const endpointTemplateMatcher = /\/user\/v2\/content/gm;
 export const anotherEndpointTemplateMatcher = /\/user\/v2\/profile/gm;
 
 const baseUrl = 'https://domain.dev';
@@ -15,7 +18,26 @@ export const urlSpec: UrlSpec = {
   template: endpointTemplate,
 };
 
+export const urlSpecWithPathParam: UrlSpec = {
+  id: 'get-customer',
+  method: 'GET',
+  name: 'search',
+  tags: ['user'],
+  template: endpointTemplateWithPathParam,
+};
+
+export const urlSpecWithPathParamSearch: UrlSpec = {
+  id: 'get-search',
+  method: 'GET',
+  name: 'search',
+  tags: ['user'],
+  template: endpointTemplateWithPathParamSearch,
+};
+
 export const url = 'https://domain.dev/user/v2/content/1/?group=admin#fragment';
+export const urlSearch =
+  'https://domain.dev/user/v2/customers/search/some%20sdfdf?page=1&pageSize=3';
+
 export const parsedUrl: DataUrl = {
   baseUrl,
   fragment: 'fragment',
