@@ -67,8 +67,7 @@ export const createPathFinder: PathfinderBuilder = ({
   const storage = getStorage(getStorageAdapter(data, dataKey));
 
   const getGlobalEnv: GlobalEnvGetter = () => storage.getGlobalEnv();
-  const getUrlEnv: UrlEnvGetter = urlId =>
-    storage.getEndpointEnv(urlId) || getGlobalEnv();
+  const getUrlEnv: UrlEnvGetter = urlId => storage.getEndpointEnv(urlId) || getGlobalEnv();
 
   const buildUrl = makeBuildUrl({
     specGetter: findSpec,
