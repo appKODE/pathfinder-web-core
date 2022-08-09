@@ -1,5 +1,26 @@
 
 
+## [2.0.0](https://https//github.com/appKODE/pathfinder-web-core/compare/v1.1.2...v2.0.0) (2022-08-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* **lib:** createUrlMatchers -> createTemplatesBySpec
+
+### Features
+
+* **readme:** update readme ([977d48f](https://https//github.com/appKODE/pathfinder-web-core/commit/977d48fa47eaaa99ba719fb1b0fb37e9bf9347e9))
+
+
+### Bug Fixes
+
+* **webpack-config:** add js files to resolve ([0b95215](https://https//github.com/appKODE/pathfinder-web-core/commit/0b95215c9dff3a2c1ca22e7572c4440f21a8c097))
+
+
+### Code Refactoring
+
+* **lib:** rewrite build url ([69b72f7](https://https//github.com/appKODE/pathfinder-web-core/commit/69b72f7a2e0688714d4b6790354d3018a51d44b6))
+
 ### [1.1.2](https://https//github.com/appKODE/pathfinder-web-core/compare/v1.1.1...v1.1.2) (2022-05-21)
 
 
