@@ -7,29 +7,29 @@ import {
   ResetHandler,
   SpecGetter,
   SpecSetter,
-  UrlBuilder,
   UrlEnvGetter,
   UrlEnvSetter,
   UrlSpec,
 } from './types';
 
 import {
-  createTemplateRegExp,
   createUrl,
-  getPath,
   parseUrl,
   findSpec,
   getStorageAdapter,
+  makeBuildUrl,
 } from './utils';
 
-export function createUrlMatchers(urlList: UrlSpec[]): Map<UrlSpec, RegExp> {
-  const matchers = new Map<UrlSpec, RegExp>();
+export function createTemplatesBySpec(
+  urlList: UrlSpec[],
+): Map<UrlSpec, string> {
+  const templatesBySpec = new Map<UrlSpec, string>();
 
   for (const urlSpec of urlList) {
-    matchers.set(urlSpec, createTemplateRegExp(urlSpec.template));
+    templatesBySpec.set(urlSpec, urlSpec.template);
   }
 
-  return matchers;
+  return templatesBySpec;
 }
 
 const createSpec = () => {
@@ -42,8 +42,8 @@ const createSpec = () => {
     setEnvs(data: EnvSpec[]) {
       envs = data;
     },
-    getUrlMatchers() {
-      return createUrlMatchers(urls);
+    getTemplatesBySpec() {
+      return createTemplatesBySpec(urls);
     },
     getUrls() {
       return [...urls];
@@ -66,52 +66,24 @@ export const createPathFinder: PathfinderBuilder = ({
 
   const storage = getStorage(getStorageAdapter(data, dataKey));
 
-  const buildUrl: UrlBuilder = ({ method, url, matchers, envSpecs }) => {
-    const urlSpec = findSpec(matchers, method, url);
-    const dataUrl = parseUrl(url);
+  const getGlobalEnv: GlobalEnvGetter = () => storage.getGlobalEnv();
+  const getUrlEnv: UrlEnvGetter = urlId =>
+    storage.getEndpointEnv(urlId) || getGlobalEnv();
 
-    if (urlSpec && dataUrl) {
-      const matcher = createUrlMatchers([urlSpec]).get(urlSpec);
-
-      const path =
-        matcher && dataUrl?.path ? getPath(dataUrl.path, matcher) : null;
-
-      if (!path) {
-        return url;
-      }
-
-      const envId = getUrlEnv(urlSpec.id) || getGlobalEnv();
-      const env = envSpecs?.find(item => item.id === envId);
-
-      if (env) {
-        dataUrl.baseUrl = env.baseUrl;
-        if (env.queryParams) {
-          for (const queryKey of Object.keys(env.queryParams)) {
-            const queryVal = env.queryParams[queryKey];
-            dataUrl.query.set(queryKey, queryVal);
-          }
-        }
-
-        const newUrl = createUrl({ ...dataUrl, path });
-
-        return newUrl || url;
-      }
-    }
-
-    return url;
-  };
+  const buildUrl = makeBuildUrl({
+    specGetter: findSpec,
+    urlEnvGetter: getUrlEnv,
+    createUrl,
+    parseUrl,
+  });
 
   const setGlobalEnv: GlobalEnvSetter = envId => {
     storage.setGlobalEnv(envId);
   };
 
-  const getGlobalEnv: GlobalEnvGetter = () => storage.getGlobalEnv();
-
   const setUrlEnv: UrlEnvSetter = (urlId, envId) => {
     storage.setEndpointEnv(urlId, envId);
   };
-
-  const getUrlEnv: UrlEnvGetter = urlId => storage.getEndpointEnv(urlId);
 
   const setSpec: SpecSetter = (obj: unknown) => {
     try {
