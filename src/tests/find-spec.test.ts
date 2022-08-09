@@ -72,6 +72,16 @@ describe('parseUrl test', () => {
     expect(result).toEqual(specWithWithPathParamSearch);
   });
 
+  it('test specWithPathParamSearch without last slash', () => {
+    const result = findSpec(
+      templatesBySpec,
+      'GET',
+      'https://domain.dev/user/v2/customers/search/without-last-slash?page=1&pageSize=3',
+    );
+
+    expect(result).toEqual(specWithWithPathParamSearch);
+  });
+
   it('test specWithSeparatedPathParam', () => {
     const result = findSpec(
       templatesBySpec,
