@@ -17,8 +17,7 @@ type UrlBuilderFabric = (arg: {
  *
  */
 export const makeBuildUrl: UrlBuilderFabric =
-  ({ specGetter, urlEnvGetter, createUrl, parseUrl }) =>
-  ({ templatesBySpec, method, url, envSpecs }) => {
+  ({ specGetter, urlEnvGetter, createUrl, parseUrl }) => ({ templatesBySpec, method, url, envSpecs }) => {
     const urlSpec = specGetter(templatesBySpec, method, url);
     const parsedUrl = parseUrl(url);
 
