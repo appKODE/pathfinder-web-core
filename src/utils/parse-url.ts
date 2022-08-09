@@ -1,6 +1,9 @@
 import { DataUrl } from '../types';
 
-export function parseUrl(val: string): DataUrl | null {
+export type ParseUrlFn = (val: string) => DataUrl | null;
+
+/* Парсит переданный URL на составляющие */
+export const parseUrl: ParseUrlFn = val => {
   const match = val.match(
     /^(([^:/?#]+):)?(\/\/([^/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?/,
   );
@@ -33,4 +36,4 @@ export function parseUrl(val: string): DataUrl | null {
     return url;
   }
   return null;
-}
+};
