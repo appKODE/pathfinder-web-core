@@ -9,6 +9,8 @@ export type UrlMethod =
   | 'CONNECT'
   | 'OPTIONS';
 
+export type UTLTemplate = string;
+
 export type UrlSpec = {
   id: string;
   name: string;
@@ -27,7 +29,7 @@ export type EnvSpec = {
 export type UrlBuilderArg = {
   method: string;
   url: string;
-  matchers: Map<UrlSpec, RegExp>;
+  templatesBySpec: Map<UrlSpec, UTLTemplate>;
   envSpecs?: EnvSpec[];
 };
 
@@ -65,7 +67,7 @@ export type UrlHeadersGetter = (url: string) => Header[];
 export type GlobalHeadersGetter = () => Header[];
 
 export type FindSpecFn = (
-  matchers: Map<UrlSpec, RegExp>,
+  templatesBySpec: Map<UrlSpec, UTLTemplate>,
   method: string,
   url: string,
 ) => UrlSpec | null;

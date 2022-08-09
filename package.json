@@ -91,5 +91,8 @@
       "eslint --cache --fix",
       "prettier --write"
     ]
+  },
+  "dependencies": {
+    "url-pattern": "^1.0.3"
   }
 }
