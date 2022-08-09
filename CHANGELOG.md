@@ -1,5 +1,12 @@
 
 
+### [2.0.1](https://https//github.com/appKODE/pathfinder-web-core/compare/v2.0.0...v2.0.1) (2022-08-09)
+
+
+### Bug Fixes
+
+* **find spec:** make last '/' optional at template ([3ea413c](https://https//github.com/appKODE/pathfinder-web-core/commit/3ea413c3e2c5af2c69ee0eb8a6b27a8b90fbb313))
+
 ## [2.0.0](https://https//github.com/appKODE/pathfinder-web-core/compare/v1.1.2...v2.0.0) (2022-08-09)
 
 
