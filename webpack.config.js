@@ -15,7 +15,7 @@ module.exports = ({ development }) => ({
     globalObject: "typeof self === 'undefined' ? this : self",
   },
   resolve: {
-    extensions: ['.ts'],
+    extensions: ['.ts', '.js'],
   },
   module: {
     rules: [
