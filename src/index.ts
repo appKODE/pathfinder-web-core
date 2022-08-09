@@ -1,4 +1,4 @@
-import { createPathFinder, createUrlMatchers } from './lib';
+import { createPathFinder, createTemplatesBySpec } from './lib';
 
 export {
   DataResolver,
@@ -23,9 +23,9 @@ export {
   UrlSpec,
 } from './types';
 
-export { createPathFinder, createUrlMatchers };
+export { createPathFinder, createTemplatesBySpec };
 
 export default {
   createPathFinder,
-  createUrlMatchers,
+  createTemplatesBySpec,
 };

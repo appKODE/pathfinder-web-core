@@ -1,6 +1,9 @@
 import { DataUrl } from '../types';
 
-export function createUrl(url: DataUrl): string | null {
+export type CreateUrlFn = (url: DataUrl) => string | null;
+
+/** Собирает url из параметров URL в одну строку */
+export const createUrl: CreateUrlFn = url => {
   const result = [];
 
   if (!url.baseUrl) {
@@ -21,4 +24,4 @@ export function createUrl(url: DataUrl): string | null {
   }
 
   return result.join('');
-}
+};

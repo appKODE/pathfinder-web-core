@@ -1,12 +1,28 @@
+import UrlPattern from 'url-pattern';
 import { FindSpecFn, UrlSpec } from '../types';
 
-export const findSpec: FindSpecFn = (matchers, method, url) => {
+/**
+ *
+ * Находит UrlSpec из списка для url и method
+ *
+ */
+export const findSpec: FindSpecFn = (templates, method, url) => {
   let result: UrlSpec | null = null;
 
-  matchers.forEach((value, key) => {
-    const match = url.match(value);
+  templates.forEach((value, key) => {
+    const template = value
+      .replace(/{.*}/gm, match => `(/:${match.replace(/(\{|\})/gm, '')})`)
+      .replace(/\/\(\//gm, '(/');
 
-    if (match && key.method === method) {
+    const pattern = new UrlPattern(`${template}/`, {
+      segmentNameCharset: 'a-zA-Z0-9_-',
+    });
+
+    const { pathname } = new URL(url);
+
+    const res = pattern.match(pathname);
+
+    if (res && key.method === method) {
       result = key;
     }
   });
